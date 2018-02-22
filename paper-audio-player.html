@@ -381,6 +381,26 @@ Custom property                             | Description                       
         player.error = false;
         player.$.audio.currentTime = player.timeOffset; // apply the audio start time property
 
+        // Register listeners in a polymer 2.0 way
+        if(Polymer.version.startsWith('2')) {
+          player.$.audio.addEventListener('loadedmetadata', _ => {
+            player._onCanPlay();
+          });
+          player.$.audio.addEventListener('playing', _ => {
+            player._onPlaying();
+          });
+          player.$.audio.addEventListener('pause', _ => {
+            player._onPause();
+          });
+          player.$.audio.addEventListener('ended', _ => {
+            player._onEnd();
+          });
+          player.$.audio.addEventListener('error', _ => {
+            player._onError();
+          });
+          // debugger;
+        }
+
         // If 'ga-id' property is set,
         // prepare Google Analytics tracker
         if (!!player.gaId) player._setupGATracking();
