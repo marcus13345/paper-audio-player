@@ -519,7 +519,7 @@ Custom property                             | Description                       
 
       _startProgressTimer: function() {
         var player = this;
-        player.timer = {};
+        player.timer = player.timer || {};
 
         if (player.timer.sliderUpdateInterval) {
           clearInterval(player.timer.sliderUpdateInterval);
