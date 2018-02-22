@@ -150,7 +150,13 @@ Custom property                             | Description                       
 
       /* On hover */
 
+      /* Shadow DOM v0 / Shady DOM */
       :host:not(.cantplay) #right:hover #replay {
+        opacity: 1;
+      }
+
+      /* Shadow DOM v1 */
+      :host(:not(.cantplay)) #right:hover #replay {
         opacity: 1;
       }
 
